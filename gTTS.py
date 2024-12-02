@@ -1,25 +1,30 @@
 import sys
 import subprocess
-import os
-from datetime import datetime
-from gtts import gTTS
 
 def speak(language, text_to_speak):
-    # Create a gTTS object
-    tts = gTTS(text=text_to_speak, lang=language, slow=False)
-    
-    # Create a unique name for the audio file using a timestamp
-    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-    audio_file = f"temp_audio_{timestamp}.mp3"
-    
-    # Save the audio file to a temporary file
-    tts.save(audio_file)
-    
-    # Play the audio file using ffplay
-    subprocess.run(["C:\\Tools\\ffmpeg\\ffmpeg-7.1-essentials_build\\bin\\ffplay.exe", "-nodisp", "-autoexit", audio_file])
+    # Call gtts-cli as an external command
+    gtts_command = [
+        "C:\\Tools\\gTTS\\venv\\Scripts\\gtts-cli.exe",
+        "--lang", language,
+        "--"  # Tell gtts-cli that any following arguments are not options
+    ] + [text_to_speak]  # Add the text to speak as an argument
 
-    # Remove the audio file after playing (optional)
-    os.remove(audio_file)
+    # Execute the command and pipe the output to ffplay
+    ffplay_command = [
+        "C:\\Tools\\ffmpeg\\ffmpeg-7.1-essentials_build\\bin\\ffplay.exe",
+        "-nodisp", "-autoexit", "-"
+    ]
+
+    # Use subprocess to pipe the output of gtts-cli to ffplay
+    gtts_process = subprocess.Popen(gtts_command, stdout=subprocess.PIPE)
+    ffplay_process = subprocess.Popen(ffplay_command, stdin=gtts_process.stdout)
+
+    # Close the stdout to allow gtts_process to terminate properly
+    gtts_process.stdout.close()
+
+    # Wait for both processes to complete
+    gtts_process.wait()
+    ffplay_process.wait()
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
