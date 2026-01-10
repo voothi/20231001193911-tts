@@ -1,5 +1,6 @@
 # gTTS Text-to-Speech Utilities
 
+[![Version](https://img.shields.io/badge/version-v1.0.0-blue)](release-notes.md#v1.0.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](ref/LICENSE)
 
 A small collection of helper scripts for working with Google Text-to-Speech and the `gtts-cli` tool on Windows.
