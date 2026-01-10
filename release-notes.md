@@ -6,5 +6,3 @@
 - **Maintenance**: Legacy helper scripts under `a/` are now documented as archived; they remain for reference but are not actively maintained.
 - **Infrastructure**: Added RFC staging file `docs/rfcs/20260110220419-staging.md` (ZID: 20260110220419) describing analytics and decisions.
 - **Note**: Update absolute paths in `gTTS.py` or install `gtts-cli`/`ffplay` on PATH for local usage.
-
-See `ref/release-notes.md` for prior changelog examples.

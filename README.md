@@ -1,7 +1,7 @@
 # gTTS Text-to-Speech Utilities
 
 [![Version](https://img.shields.io/badge/version-v1.0.0-blue)](release-notes.md#v1.0.0)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](ref/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A small collection of helper scripts for working with Google Text-to-Speech and the `gtts-cli` tool on Windows.
 
@@ -101,4 +101,4 @@ This project is part of the Kardenwort ecosystem — a collection of small, focu
 [Return to Top](#gtts-text-to-speech-utilities)
 
 ## License
-See `ref/LICENSE` for license details (MIT).
+See `LICENSE` for license details (MIT).
